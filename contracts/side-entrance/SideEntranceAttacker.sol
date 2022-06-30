@@ -19,4 +19,6 @@ import "./SideEntranceLenderPool.sol";
     function execute() external payable {
         SideEntranceLenderPool(msg.sender).deposit{value: msg.value}();
     }
+
+    receive() external payable {}
  }
